@@ -16,5 +16,10 @@
       "all_frames": true,
       "match_about_blank": false
     }
-  ]
+  ],
+  "options_ui": {
+    "page": "rof-options.html",
+    "chrome_style": false,
+    "open_in_tab": true
+  }
 }

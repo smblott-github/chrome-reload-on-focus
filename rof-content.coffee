@@ -19,4 +19,4 @@ chrome.storage.sync.get "regexes", (items) ->
 init ->
   window.addEventListener "focus", (event) ->
     if active and event.target == window
-      location.reload()
+      location.reload true
