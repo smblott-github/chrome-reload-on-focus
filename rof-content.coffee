@@ -1,6 +1,14 @@
 
 active = false
-init = (callback) ->
+
+chrome.storage.sync.get "regexes", (items) ->
+  unless items.regexes
+    chrome.storage.sync.set {regexes: ["file://.*"]}, ->
+
+window.addEventListener "focus", (event) ->
+  location.reload true if event.target == window and active
+
+init = ->
   chrome.storage.sync.get "regexes", (items) ->
     active = false
     loc = location.toString()
@@ -8,15 +16,7 @@ init = (callback) ->
       if new RegExp(regex).test loc
         active = true
         break
-    callback?()
+    chrome.runtime.sendMessage {active}
 
 chrome.storage.onChanged.addListener init
-
-chrome.storage.sync.get "regexes", (items) ->
-  unless items.regexes
-    chrome.storage.sync.set {regexes: ["file://.*"]}, ->
-
-init ->
-  window.addEventListener "focus", (event) ->
-    if active and event.target == window
-      location.reload true
+init()

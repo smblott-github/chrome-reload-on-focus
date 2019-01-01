@@ -16,9 +16,12 @@ chrome.storage.sync.get "regexes", (items) ->
     regexesElement = document.getElementById "regexes"
     previousValue = regexesElement.value = items.regexes.join "\n"
 
-    regexesElement.addEventListener "blur", ->
-      newValue = regexesElement.value.trim().split(/\s+/g)
-      if newValue.join("\n") != previousValue
-        console.log newValue
-        previousValue = newValue.join("\n")
-        chrome.storage.sync.set {regexes: newValue}, ->
+    window.addEventListener "keydown", (event) ->
+      console.log event.key
+      if event.ctrlKey and event.key == "Enter"
+        regexesElement.blur()
+        newValue = regexesElement.value.trim().split(/\s+/g)
+        if newValue.join("\n") != previousValue
+          console.log newValue
+          previousValue = newValue.join("\n")
+          chrome.storage.sync.set {regexes: newValue}, ->

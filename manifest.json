@@ -12,14 +12,20 @@
     {
       "matches": ["<all_urls>"],
       "js": ["rof-content.js"],
-      "run_at": "document_start",
-      "all_frames": true,
-      "match_about_blank": false
+      "run_at": "document_start"
     }
   ],
+  "background": {
+    "scripts": [
+      "rof-background.js"
+    ]
+  },
   "options_ui": {
     "page": "rof-options.html",
     "chrome_style": false,
     "open_in_tab": true
+  },
+  "browser_action": {
+    "default_icon": "icons/rof-off-512x512.png"
   }
 }
