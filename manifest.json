@@ -4,10 +4,8 @@
   "version": "1.0",
   "description": "Reload a tab whenever it receives the focus.",
   "minimum_chrome_version": "51.0",
-  "permissions": [
-    "storage",
-    "<all_urls>"
-  ],
+  "host_permissions": ["<all_urls>"],
+  "permissions": [ "storage" ],
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
@@ -15,17 +13,8 @@
       "run_at": "document_start"
     }
   ],
-  "background": {
-    "scripts": [
-      "rof-background.js"
-    ]
-  },
   "options_ui": {
     "page": "rof-options.html",
-    "chrome_style": false,
     "open_in_tab": true
-  },
-  "browser_action": {
-    "default_icon": "icons/rof-off-512x512.png"
   }
 }

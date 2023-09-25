@@ -16,7 +16,6 @@ init = ->
       if new RegExp(regex).test loc
         active = true
         break
-    chrome.runtime.sendMessage {active}
 
 chrome.storage.onChanged.addListener init
 init()
