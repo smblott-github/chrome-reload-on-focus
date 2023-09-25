@@ -13,7 +13,7 @@ auto:
 
 dist:
 	mkdir -p dist
-	rm -vf dist/rof.zip
-	zip dist/rof.zip *.html *.js icons/* manifest.json
+	rm -vf dist/chrome-reload-on-focus.zip
+	zip dist/chrome-reload-on-focus.zip *.html *.js icons/* manifest.json
 
 .PHONY: build auto dist
